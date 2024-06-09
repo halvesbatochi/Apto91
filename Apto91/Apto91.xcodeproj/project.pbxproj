@@ -12,6 +12,7 @@
 		5C01ACF42C152238006CFF5F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01ACF32C152238006CFF5F /* HomeViewController.swift */; };
 		5C01ACF92C152239006CFF5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C01ACF82C152239006CFF5F /* Assets.xcassets */; };
 		5C01ACFC2C152239006CFF5F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 5C01ACFB2C152239006CFF5F /* Base */; };
+		5C01AD112C152B2E006CFF5F /* APHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD102C152B2E006CFF5F /* APHomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		5C01ACF82C152239006CFF5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C01ACFB2C152239006CFF5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C01ACFD2C152239006CFF5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C01AD102C152B2E006CFF5F /* APHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APHomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		5C01AD0A2C152726006CFF5F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5C01AD102C152B2E006CFF5F /* APHomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C01AD112C152B2E006CFF5F /* APHomeView.swift in Sources */,
 				5C01ACF42C152238006CFF5F /* HomeViewController.swift in Sources */,
 				5C01ACF02C152238006CFF5F /* AppDelegate.swift in Sources */,
 				5C01ACF22C152238006CFF5F /* SceneDelegate.swift in Sources */,
