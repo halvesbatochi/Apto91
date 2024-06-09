@@ -1,5 +1,5 @@
 //
-//  APHomeView.swift
+//  SharedItensView.swift
 //  Apto91
 //
 //  Created by Henrique Alves Batochi on 08/06/24.
@@ -7,19 +7,18 @@
 
 import UIKit
 
-class APHomeView: UIView {
+class APSharedItensView: UIView {
 
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemPink
+        backgroundColor = .systemBlue
         
     }
     
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
     }
-    
 }

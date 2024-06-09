@@ -15,8 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let homeVC = HomeViewController()
-        window.rootViewController = homeVC
+        // TODO: To refactor to consider a local storage variable if exist the Token
+        let vc = true ? TabBarController() : SignUpViewController()
+        window.rootViewController = vc
         window.makeKeyAndVisible()
         self.window = window
     }
