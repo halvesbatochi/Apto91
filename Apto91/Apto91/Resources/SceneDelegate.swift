@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         // TODO: To refactor to consider a local storage variable if exist the Token
-        let vc = true ? TabBarController() : SignUpViewController()
+        let vc = false ? TabBarViewController() : SignUpViewController()
         window.rootViewController = vc
         window.makeKeyAndVisible()
         self.window = window

@@ -13,7 +13,7 @@
 		5C01ACF92C152239006CFF5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C01ACF82C152239006CFF5F /* Assets.xcassets */; };
 		5C01ACFC2C152239006CFF5F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 5C01ACFB2C152239006CFF5F /* Base */; };
 		5C01AD112C152B2E006CFF5F /* APHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD102C152B2E006CFF5F /* APHomeView.swift */; };
-		5C01AD132C152EAB006CFF5F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD122C152EAB006CFF5F /* TabBarController.swift */; };
+		5C01AD132C152EAB006CFF5F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD122C152EAB006CFF5F /* TabBarViewController.swift */; };
 		5C01AD152C1531A4006CFF5F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD142C1531A4006CFF5F /* SignUpViewController.swift */; };
 		5C01AD172C15331A006CFF5F /* APSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD162C15331A006CFF5F /* APSignUpView.swift */; };
 		5C01AD192C15357E006CFF5F /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD182C15357E006CFF5F /* BudgetViewController.swift */; };
@@ -22,6 +22,7 @@
 		5C01AD212C153BB2006CFF5F /* APSharedItensView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD202C153BB2006CFF5F /* APSharedItensView.swift */; };
 		5C01AD232C154077006CFF5F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD222C154077006CFF5F /* ProfileViewController.swift */; };
 		5C01AD262C154098006CFF5F /* APProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD252C154098006CFF5F /* APProfileView.swift */; };
+		5C2E77B32C25D318003BCA83 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E77B22C25D318003BCA83 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,7 @@
 		5C01ACFB2C152239006CFF5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C01ACFD2C152239006CFF5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C01AD102C152B2E006CFF5F /* APHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APHomeView.swift; sourceTree = "<group>"; };
-		5C01AD122C152EAB006CFF5F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5C01AD122C152EAB006CFF5F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		5C01AD142C1531A4006CFF5F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5C01AD162C15331A006CFF5F /* APSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APSignUpView.swift; sourceTree = "<group>"; };
 		5C01AD182C15357E006CFF5F /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 		5C01AD202C153BB2006CFF5F /* APSharedItensView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APSharedItensView.swift; sourceTree = "<group>"; };
 		5C01AD222C154077006CFF5F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5C01AD252C154098006CFF5F /* APProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APProfileView.swift; sourceTree = "<group>"; };
+		5C2E77B22C25D318003BCA83 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				5C01ACF82C152239006CFF5F /* Assets.xcassets */,
 				5C01ACF12C152238006CFF5F /* SceneDelegate.swift */,
 				5C01ACEF2C152238006CFF5F /* AppDelegate.swift */,
+				5C2E77B22C25D318003BCA83 /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -118,7 +121,7 @@
 				5C01AD242C154080006CFF5F /* Profile */,
 				5C01AD1F2C153B75006CFF5F /* Shared Itens */,
 				5C01AD1A2C1535C8006CFF5F /* Budget */,
-				5C01AD0D2C1527DB006CFF5F /* SignUp */,
+				5C01AD0D2C1527DB006CFF5F /* Sign Up */,
 				5C01AD0A2C152726006CFF5F /* Home */,
 			);
 			path = Views;
@@ -136,8 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				5C01ACF32C152238006CFF5F /* HomeViewController.swift */,
-				5C01AD122C152EAB006CFF5F /* TabBarController.swift */,
-				5C01AD142C1531A4006CFF5F /* SignUpViewController.swift */,
+				5C01AD122C152EAB006CFF5F /* TabBarViewController.swift */,
 				5C01AD182C15357E006CFF5F /* BudgetViewController.swift */,
 				5C01AD1D2C153ADA006CFF5F /* SharedItensViewController.swift */,
 				5C01AD222C154077006CFF5F /* ProfileViewController.swift */,
@@ -148,6 +150,7 @@
 		5C01AD092C152706006CFF5F /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				5C01AD272C154270006CFF5F /* Sign Up */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -174,12 +177,12 @@
 			path = APIClient;
 			sourceTree = "<group>";
 		};
-		5C01AD0D2C1527DB006CFF5F /* SignUp */ = {
+		5C01AD0D2C1527DB006CFF5F /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
 				5C01AD162C15331A006CFF5F /* APSignUpView.swift */,
 			);
-			path = SignUp;
+			path = "Sign Up";
 			sourceTree = "<group>";
 		};
 		5C01AD1A2C1535C8006CFF5F /* Budget */ = {
@@ -204,6 +207,14 @@
 				5C01AD252C154098006CFF5F /* APProfileView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		5C01AD272C154270006CFF5F /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				5C01AD142C1531A4006CFF5F /* SignUpViewController.swift */,
+			);
+			path = "Sign Up";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,8 +298,9 @@
 				5C01ACF42C152238006CFF5F /* HomeViewController.swift in Sources */,
 				5C01AD1C2C1535E1006CFF5F /* APBudgetView.swift in Sources */,
 				5C01ACF02C152238006CFF5F /* AppDelegate.swift in Sources */,
-				5C01AD132C152EAB006CFF5F /* TabBarController.swift in Sources */,
+				5C01AD132C152EAB006CFF5F /* TabBarViewController.swift in Sources */,
 				5C01ACF22C152238006CFF5F /* SceneDelegate.swift in Sources */,
+				5C2E77B32C25D318003BCA83 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
