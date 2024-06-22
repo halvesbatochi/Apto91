@@ -14,13 +14,9 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Sign Up"
-        
-        self.navigationItem.largeTitleDisplayMode = .always
-        
+        signUpView.delegate = self
+
         view.backgroundColor = UIColor.signUpBackground
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.systemGray]
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.systemGray]
         
         view.addSubview(signUpView)
         
@@ -34,5 +30,22 @@ class SignUpViewController: UIViewController {
             signUpView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             signUpView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+}
+
+/// APSignUpViewDelegate
+extension SignUpViewController: APSignUpViewDelegate {
+    func navigateToHouseSignUpButton(_ sender: UIButton) {
+        let vc = HouseSignUpViewController()
+        vc.navigationController?.navigationBar.prefersLargeTitles = true
+        vc.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func navigateToResidentSignUpButton(_ sender: UIButton) {
+        let vc = ResidentSignUpViewController()
+        vc.navigationController?.navigationBar.prefersLargeTitles = true
+        vc.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
