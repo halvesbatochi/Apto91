@@ -14,8 +14,7 @@ class APHouseSignUpView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        
-        backgroundColor = .magenta
+        backgroundColor = UIColor.signUpBackground
         
         addConstraints()
     }

@@ -17,6 +17,11 @@ final class APSignUpView: UIView {
     
     public weak var delegate: APSignUpViewDelegate?
     
+    private let sizeTraits: [UITrait] = [UITraitVerticalSizeClass.self, UITraitHorizontalSizeClass.self]
+    private var compactConstraints: [NSLayoutConstraint] = []
+    private var regularConstraints: [NSLayoutConstraint] = []
+    private var sharedConstraints: [NSLayoutConstraint] = []
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Bem vindo!"
@@ -92,6 +97,12 @@ final class APSignUpView: UIView {
         
         addConstraints()
         setupButtons()
+        
+        NSLayoutConstraint.activate(sharedConstraints)
+                
+        registerForTraitChanges(sizeTraits) {(self: Self, previousTraitCollection: UITraitCollection) in
+            self.layoutTrait(traitCollection: UIScreen.main.traitCollection)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -111,8 +122,39 @@ final class APSignUpView: UIView {
         delegate?.navigateToResidentSignUpButton(sender)
     }
     
+    func layoutTrait(traitCollection: UITraitCollection) {
+        if (!sharedConstraints[0].isActive) {
+            NSLayoutConstraint.deactivate(regularConstraints)
+            NSLayoutConstraint.deactivate(compactConstraints)
+            
+            circleView.layer.cornerRadius = 150
+            NSLayoutConstraint.activate(sharedConstraints)
+            
+        } else if traitCollection.horizontalSizeClass == .compact &&
+            traitCollection.verticalSizeClass == .regular {
+            
+            NSLayoutConstraint.deactivate(sharedConstraints)
+            
+            if regularConstraints.count > 0 && regularConstraints[0].isActive {
+                NSLayoutConstraint.deactivate(regularConstraints)
+            }
+            NSLayoutConstraint.activate(compactConstraints)
+            
+        } else {
+            
+            NSLayoutConstraint.deactivate(sharedConstraints)
+            
+            if compactConstraints.count > 0 && compactConstraints[0].isActive {
+                NSLayoutConstraint.deactivate(compactConstraints)
+            }
+            circleView.layer.cornerRadius = 60
+            NSLayoutConstraint.activate(regularConstraints)
+        }
+    }
+    
     private func addConstraints() {
-        NSLayoutConstraint.activate([
+        
+        sharedConstraints.append(contentsOf: [
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 4),
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
@@ -128,8 +170,38 @@ final class APSignUpView: UIView {
             
             logoView.heightAnchor.constraint(equalToConstant: 120),
             logoView.widthAnchor.constraint(equalToConstant: 130),
-            logoView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            logoView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            logoView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
+            logoView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
+            
+            residentButton.heightAnchor.constraint(equalToConstant: 60),
+            residentButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            residentButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+            residentButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            
+            houseButton.heightAnchor.constraint(equalToConstant: 60),
+            houseButton.leftAnchor.constraint(equalTo: residentButton.leftAnchor),
+            houseButton.rightAnchor.constraint(equalTo: residentButton.rightAnchor),
+            houseButton.bottomAnchor.constraint(equalTo: residentButton.topAnchor, constant: -10)
+        ])
+        
+        regularConstraints.append(contentsOf: [
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 4),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+            
+            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
+            messageLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor, constant: 0),
+            messageLabel.widthAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.width + 10),
+            
+            circleView.topAnchor.constraint(equalTo: titleLabel.topAnchor),
+            circleView.rightAnchor.constraint(equalTo: rightAnchor,constant: -10),
+            circleView.heightAnchor.constraint(equalToConstant: 120),
+            circleView.widthAnchor.constraint(equalToConstant: 120),
+            
+            logoView.heightAnchor.constraint(equalToConstant: 70),
+            logoView.widthAnchor.constraint(equalToConstant: 80),
+            logoView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
+            logoView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
             
             residentButton.heightAnchor.constraint(equalToConstant: 60),
             residentButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
@@ -141,7 +213,11 @@ final class APSignUpView: UIView {
             houseButton.rightAnchor.constraint(equalTo: residentButton.rightAnchor),
             houseButton.bottomAnchor.constraint(equalTo: residentButton.topAnchor, constant: -10)
             
+            
+        ])
+        
+        compactConstraints.append(contentsOf: [
+
         ])
     }
-
 }
