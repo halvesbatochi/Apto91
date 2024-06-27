@@ -98,7 +98,7 @@ final class APSignUpView: UIView {
         addConstraints()
         setupButtons()
         
-        NSLayoutConstraint.activate(sharedConstraints)
+        chooseConstraints(traitCollection: UIScreen.main.traitCollection)
                 
         registerForTraitChanges(sizeTraits) {(self: Self, previousTraitCollection: UITraitCollection) in
             self.layoutTrait(traitCollection: UIScreen.main.traitCollection)
@@ -107,6 +107,19 @@ final class APSignUpView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
+    }
+    
+    func chooseConstraints(traitCollection: UITraitCollection) {
+        
+        if traitCollection.verticalSizeClass == .regular &&
+            traitCollection.horizontalSizeClass == .compact {
+            NSLayoutConstraint.activate(sharedConstraints)
+        } else if traitCollection.verticalSizeClass == .compact &&
+                    traitCollection.horizontalSizeClass == .regular {
+            NSLayoutConstraint.activate(compactConstraints)
+        } else {
+            NSLayoutConstraint.activate(regularConstraints)
+        }
     }
     
     private func setupButtons() {
@@ -173,12 +186,12 @@ final class APSignUpView: UIView {
             logoView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
             logoView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
             
-            residentButton.heightAnchor.constraint(equalToConstant: 60),
+            residentButton.heightAnchor.constraint(equalToConstant: 50),
             residentButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             residentButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
             residentButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             
-            houseButton.heightAnchor.constraint(equalToConstant: 60),
+            houseButton.heightAnchor.constraint(equalToConstant: 50),
             houseButton.leftAnchor.constraint(equalTo: residentButton.leftAnchor),
             houseButton.rightAnchor.constraint(equalTo: residentButton.rightAnchor),
             houseButton.bottomAnchor.constraint(equalTo: residentButton.topAnchor, constant: -10)
@@ -203,21 +216,17 @@ final class APSignUpView: UIView {
             logoView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
             logoView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
             
-            residentButton.heightAnchor.constraint(equalToConstant: 60),
+            residentButton.heightAnchor.constraint(equalToConstant: 40),
             residentButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             residentButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
             residentButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             
-            houseButton.heightAnchor.constraint(equalToConstant: 60),
+            houseButton.heightAnchor.constraint(equalToConstant: 40),
             houseButton.leftAnchor.constraint(equalTo: residentButton.leftAnchor),
             houseButton.rightAnchor.constraint(equalTo: residentButton.rightAnchor),
             houseButton.bottomAnchor.constraint(equalTo: residentButton.topAnchor, constant: -10)
-            
-            
         ])
         
-        compactConstraints.append(contentsOf: [
-
-        ])
+        compactConstraints.append(contentsOf: sharedConstraints)
     }
 }
