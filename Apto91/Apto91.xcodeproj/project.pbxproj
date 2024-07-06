@@ -15,7 +15,7 @@
 		5C01AD112C152B2E006CFF5F /* APHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD102C152B2E006CFF5F /* APHomeView.swift */; };
 		5C01AD132C152EAB006CFF5F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD122C152EAB006CFF5F /* TabBarViewController.swift */; };
 		5C01AD152C1531A4006CFF5F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD142C1531A4006CFF5F /* SignUpViewController.swift */; };
-		5C01AD172C15331A006CFF5F /* APSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD162C15331A006CFF5F /* APSignUpView.swift */; };
+		5C01AD172C15331A006CFF5F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD162C15331A006CFF5F /* SignUpView.swift */; };
 		5C01AD192C15357E006CFF5F /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD182C15357E006CFF5F /* BudgetViewController.swift */; };
 		5C01AD1C2C1535E1006CFF5F /* APBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD1B2C1535E1006CFF5F /* APBudgetView.swift */; };
 		5C01AD1E2C153ADA006CFF5F /* SharedItensViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD1D2C153ADA006CFF5F /* SharedItensViewController.swift */; };
@@ -23,10 +23,12 @@
 		5C01AD232C154077006CFF5F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD222C154077006CFF5F /* ProfileViewController.swift */; };
 		5C01AD262C154098006CFF5F /* APProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01AD252C154098006CFF5F /* APProfileView.swift */; };
 		5C043DD32C267BB8004A95A7 /* HouseSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C043DD22C267BB8004A95A7 /* HouseSignUpViewController.swift */; };
-		5C043DD52C267BE6004A95A7 /* APHouseSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C043DD42C267BE6004A95A7 /* APHouseSignUpView.swift */; };
+		5C043DD52C267BE6004A95A7 /* HouseSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C043DD42C267BE6004A95A7 /* HouseSignUpView.swift */; };
 		5C2E77B32C25D318003BCA83 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E77B22C25D318003BCA83 /* Extensions.swift */; };
 		5C40F04D2C2686CA0005179C /* ResidentSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40F04C2C2686CA0005179C /* ResidentSignUpViewController.swift */; };
 		5C40F04F2C2687050005179C /* APResidentSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40F04E2C2687050005179C /* APResidentSignUpView.swift */; };
+		5CBE25822C390375000858C1 /* HouseSignUpStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBE25812C390375000858C1 /* HouseSignUpStep2ViewController.swift */; };
+		5CBE25842C39038D000858C1 /* HouseSignUpStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBE25832C39038D000858C1 /* HouseSignUpStep2View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +42,7 @@
 		5C01AD102C152B2E006CFF5F /* APHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APHomeView.swift; sourceTree = "<group>"; };
 		5C01AD122C152EAB006CFF5F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		5C01AD142C1531A4006CFF5F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		5C01AD162C15331A006CFF5F /* APSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APSignUpView.swift; sourceTree = "<group>"; };
+		5C01AD162C15331A006CFF5F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		5C01AD182C15357E006CFF5F /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		5C01AD1B2C1535E1006CFF5F /* APBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APBudgetView.swift; sourceTree = "<group>"; };
 		5C01AD1D2C153ADA006CFF5F /* SharedItensViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedItensViewController.swift; sourceTree = "<group>"; };
@@ -48,10 +50,12 @@
 		5C01AD222C154077006CFF5F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5C01AD252C154098006CFF5F /* APProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APProfileView.swift; sourceTree = "<group>"; };
 		5C043DD22C267BB8004A95A7 /* HouseSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSignUpViewController.swift; sourceTree = "<group>"; };
-		5C043DD42C267BE6004A95A7 /* APHouseSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APHouseSignUpView.swift; sourceTree = "<group>"; };
+		5C043DD42C267BE6004A95A7 /* HouseSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSignUpView.swift; sourceTree = "<group>"; };
 		5C2E77B22C25D318003BCA83 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5C40F04C2C2686CA0005179C /* ResidentSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentSignUpViewController.swift; sourceTree = "<group>"; };
 		5C40F04E2C2687050005179C /* APResidentSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APResidentSignUpView.swift; sourceTree = "<group>"; };
+		5CBE25812C390375000858C1 /* HouseSignUpStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSignUpStep2ViewController.swift; sourceTree = "<group>"; };
+		5CBE25832C39038D000858C1 /* HouseSignUpStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSignUpStep2View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,9 +192,9 @@
 		5C01AD0D2C1527DB006CFF5F /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
-				5C01AD162C15331A006CFF5F /* APSignUpView.swift */,
-				5C043DD42C267BE6004A95A7 /* APHouseSignUpView.swift */,
-				5C40F04E2C2687050005179C /* APResidentSignUpView.swift */,
+				5C01AD162C15331A006CFF5F /* SignUpView.swift */,
+				5CBE257D2C3902B6000858C1 /* HouseFlow */,
+				5CBE257E2C3902CD000858C1 /* ResidentFlow */,
 			);
 			path = "Sign Up";
 			sourceTree = "<group>";
@@ -222,11 +226,45 @@
 		5C01AD272C154270006CFF5F /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
+				5CBE25802C39033C000858C1 /* ResidentFlow */,
+				5CBE257F2C390333000858C1 /* HouseFlow */,
 				5C01AD142C1531A4006CFF5F /* SignUpViewController.swift */,
-				5C043DD22C267BB8004A95A7 /* HouseSignUpViewController.swift */,
-				5C40F04C2C2686CA0005179C /* ResidentSignUpViewController.swift */,
 			);
 			path = "Sign Up";
+			sourceTree = "<group>";
+		};
+		5CBE257D2C3902B6000858C1 /* HouseFlow */ = {
+			isa = PBXGroup;
+			children = (
+				5C043DD42C267BE6004A95A7 /* HouseSignUpView.swift */,
+				5CBE25832C39038D000858C1 /* HouseSignUpStep2View.swift */,
+			);
+			path = HouseFlow;
+			sourceTree = "<group>";
+		};
+		5CBE257E2C3902CD000858C1 /* ResidentFlow */ = {
+			isa = PBXGroup;
+			children = (
+				5C40F04E2C2687050005179C /* APResidentSignUpView.swift */,
+			);
+			path = ResidentFlow;
+			sourceTree = "<group>";
+		};
+		5CBE257F2C390333000858C1 /* HouseFlow */ = {
+			isa = PBXGroup;
+			children = (
+				5C043DD22C267BB8004A95A7 /* HouseSignUpViewController.swift */,
+				5CBE25812C390375000858C1 /* HouseSignUpStep2ViewController.swift */,
+			);
+			path = HouseFlow;
+			sourceTree = "<group>";
+		};
+		5CBE25802C39033C000858C1 /* ResidentFlow */ = {
+			isa = PBXGroup;
+			children = (
+				5C40F04C2C2686CA0005179C /* ResidentSignUpViewController.swift */,
+			);
+			path = ResidentFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,14 +339,16 @@
 			files = (
 				5C01AD112C152B2E006CFF5F /* APHomeView.swift in Sources */,
 				5C01AD262C154098006CFF5F /* APProfileView.swift in Sources */,
+				5CBE25822C390375000858C1 /* HouseSignUpStep2ViewController.swift in Sources */,
 				5C01AD1E2C153ADA006CFF5F /* SharedItensViewController.swift in Sources */,
+				5CBE25842C39038D000858C1 /* HouseSignUpStep2View.swift in Sources */,
 				5C01AD212C153BB2006CFF5F /* APSharedItensView.swift in Sources */,
-				5C01AD172C15331A006CFF5F /* APSignUpView.swift in Sources */,
+				5C01AD172C15331A006CFF5F /* SignUpView.swift in Sources */,
 				5C40F04D2C2686CA0005179C /* ResidentSignUpViewController.swift in Sources */,
 				5C01AD192C15357E006CFF5F /* BudgetViewController.swift in Sources */,
 				5C01AD152C1531A4006CFF5F /* SignUpViewController.swift in Sources */,
 				5C01AD232C154077006CFF5F /* ProfileViewController.swift in Sources */,
-				5C043DD52C267BE6004A95A7 /* APHouseSignUpView.swift in Sources */,
+				5C043DD52C267BE6004A95A7 /* HouseSignUpView.swift in Sources */,
 				5C01ACF42C152238006CFF5F /* HomeViewController.swift in Sources */,
 				5C01AD1C2C1535E1006CFF5F /* APBudgetView.swift in Sources */,
 				5C01ACF02C152238006CFF5F /* AppDelegate.swift in Sources */,

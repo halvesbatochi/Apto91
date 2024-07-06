@@ -8,14 +8,14 @@
 import UIKit
 
 /// Interface to realy SignUp view events
-protocol APSignUpViewDelegate: AnyObject {
+protocol SignUpViewDelegate: AnyObject {
     func navigateToHouseSignUpButton(_ sender: UIButton)
     func navigateToResidentSignUpButton(_ sender: UIButton)
 }
 
-final class APSignUpView: UIView {
+final class SignUpView: UIView {
     
-    public weak var delegate: APSignUpViewDelegate?
+    public weak var delegate: SignUpViewDelegate?
     
     private let sizeTraits: [UITrait] = [UITraitVerticalSizeClass.self, UITraitHorizontalSizeClass.self]
     private var compactConstraints: [NSLayoutConstraint] = []
@@ -96,7 +96,7 @@ final class APSignUpView: UIView {
         circleView.addSubview(logoView)
         
         addConstraints()
-        setupButtons()
+        setUpButtons()
         
         chooseConstraints(traitCollection: UIScreen.main.traitCollection)
                 
@@ -122,7 +122,7 @@ final class APSignUpView: UIView {
         }
     }
     
-    private func setupButtons() {
+    private func setUpButtons() {
         self.houseButton.addTarget(self, action: #selector(self.houseClickedButton), for: .touchUpInside)
         self.residentButton.addTarget(self, action: #selector(self.residentClickedButton), for: .touchUpInside)
     }

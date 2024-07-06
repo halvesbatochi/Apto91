@@ -9,7 +9,7 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    private let signUpView = APSignUpView()
+    private let signUpView = SignUpView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +17,6 @@ class SignUpViewController: UIViewController {
         signUpView.delegate = self
 
         view.backgroundColor = UIColor.signUpBackground
-        
         view.addSubview(signUpView)
         
         setUpView()
@@ -34,7 +33,7 @@ class SignUpViewController: UIViewController {
 }
 
 /// APSignUpViewDelegate
-extension SignUpViewController: APSignUpViewDelegate {
+extension SignUpViewController: SignUpViewDelegate {
     func navigateToHouseSignUpButton(_ sender: UIButton) {
         let vc = HouseSignUpViewController()
         vc.navigationController?.navigationBar.prefersLargeTitles = true

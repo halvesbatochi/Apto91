@@ -9,14 +9,13 @@ import UIKit
 
 class HouseSignUpViewController: UIViewController {
     
-    private let houseSignUpView = APHouseSignUpView()
+    private let houseSignUpView = HouseSignUpView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = UIColor.signUpBackground
-        
         view.addSubview(houseSignUpView)
+        houseSignUpView.delegate = self
         
         setUpView()
     }
@@ -28,5 +27,14 @@ class HouseSignUpViewController: UIViewController {
             houseSignUpView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             houseSignUpView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+}
+
+extension HouseSignUpViewController: HouseSignUpViewDelegate {
+    func navigateToHouseSignUpStep2(_ sender: UIButton) {
+        let vc = HouseSignUpStep2ViewController()
+        vc.navigationController?.navigationBar.prefersLargeTitles = true
+        vc.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

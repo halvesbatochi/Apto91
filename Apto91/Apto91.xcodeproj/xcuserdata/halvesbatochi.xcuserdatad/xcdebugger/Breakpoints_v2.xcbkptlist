@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2AC43671-ACEE-4363-B89E-39FFA8263485"
-            shouldBeEnabled = "No"
+            uuid = "D990DE2A-3C94-48BA-982A-D52EF497CDF0"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Apto91/Controllers/Others/Sign Up/SignUpViewController.swift"
+            filePath = "Apto91/Views/Sign Up/APHouseSignUpView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "navigateToHouseSignUpButton(_:)"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "chooseConstraints(traitCollection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
