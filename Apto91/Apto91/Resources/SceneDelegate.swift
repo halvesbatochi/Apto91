@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let nav = UINavigationController()
         nav.navigationBar.tintColor = UIColor.signUpText
+        
         // TODO: To refactor to consider a local storage variable if exist the Token
         let vc = false ? TabBarViewController() : SignUpViewController()
         nav.viewControllers = [vc]

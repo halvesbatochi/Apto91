@@ -64,6 +64,7 @@ final class SignUpView: UIView {
         let button = UIButton()
         button.setTitle("Moradia", for: .normal)
         button.setTitleColor(UIColor.apto91Text, for: .normal)
+        button.setTitleColor(UIColor.signUpText, for: .highlighted)
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -74,6 +75,7 @@ final class SignUpView: UIView {
         let button = UIButton()
         button.setTitle("Morador", for: .normal)
         button.setTitleColor(UIColor.apto91Text, for: .normal)
+        button.setTitleColor(UIColor.signUpText, for: .highlighted)
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false

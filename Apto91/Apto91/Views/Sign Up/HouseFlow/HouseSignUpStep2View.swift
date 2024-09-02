@@ -7,7 +7,14 @@
 
 import UIKit
 
+/// Interface to realy HouseSignUpStep2 view events
+protocol HouseSignUpStep2ViewDelegate: AnyObject {
+    func navigateToHouseSignUpStep3(_ sender: UIButton)
+}
+
 class HouseSignUpStep2View: UIView {
+    
+    public weak var delegate: HouseSignUpStep2ViewDelegate?
     
     private let sizeTraits: [UITrait] = [UITraitVerticalSizeClass.self, UITraitHorizontalSizeClass.self]
     private var compactConstraints: [NSLayoutConstraint] = []
@@ -35,7 +42,7 @@ class HouseSignUpStep2View: UIView {
     
     private let headerImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "HouseHeaderSignIn1")
+        image.image = UIImage(named: "HouseHeaderSignUp2")
         image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -52,7 +59,6 @@ class HouseSignUpStep2View: UIView {
     
     private let signUpScrollView: UIScrollView = {
         let view = UIScrollView()
-        view.isScrollEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -67,7 +73,8 @@ class HouseSignUpStep2View: UIView {
     
     private let emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Email"
+        textField.attributedPlaceholder = NSAttributedString(string: "Email",
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         textField.clearButtonMode = .whileEditing
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
@@ -83,7 +90,8 @@ class HouseSignUpStep2View: UIView {
     
     private let loginTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Login"
+        textField.attributedPlaceholder = NSAttributedString(string: "Login",
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         textField.clearButtonMode = .whileEditing
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
@@ -99,7 +107,8 @@ class HouseSignUpStep2View: UIView {
     
     private let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Senha"
+        textField.attributedPlaceholder = NSAttributedString(string: "Senha",
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         textField.clearButtonMode = .whileEditing
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
@@ -115,7 +124,8 @@ class HouseSignUpStep2View: UIView {
     
     private let confirmationPasswordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Confirmação da senha"
+        textField.attributedPlaceholder = NSAttributedString(string: "Confirmação da Senha",
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         textField.clearButtonMode = .whileEditing
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
@@ -133,6 +143,7 @@ class HouseSignUpStep2View: UIView {
         let button = UIButton()
         button.setTitle("Próximo", for: .normal)
         button.setTitleColor(UIColor.apto91Text, for: .normal)
+        button.setTitleColor(UIColor.signUpText, for: .highlighted)
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -170,32 +181,43 @@ class HouseSignUpStep2View: UIView {
         fatalError("Unsupported")
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        endEditing(true)
+    }
+    
     private func chooseConstraints(traitCollection: UITraitCollection) {
         
         if traitCollection.verticalSizeClass == .regular &&
-            traitCollection.horizontalSizeClass == .compact {
+           traitCollection.horizontalSizeClass == .compact {
             NSLayoutConstraint.activate(sharedConstraints)
         } else if traitCollection.verticalSizeClass == .compact &&
-                    traitCollection.horizontalSizeClass == .regular {
+                  traitCollection.horizontalSizeClass == .regular {
             NSLayoutConstraint.activate(compactConstraints)
         } else {
-            signUpScrollView.isScrollEnabled = true
             NSLayoutConstraint.activate(regularConstraints)
         }
     }
     
-    private func setUpButton() {}
+    private func setUpButton() {
+        self.nextButton.addTarget(self,
+                                  action: #selector(self.nextClickedButton),
+                                  for: .touchUpInside)
+    }
+    
+    @objc
+    private func nextClickedButton(_ sender: UIButton) {
+        delegate?.navigateToHouseSignUpStep3(sender)
+    }
     
     private func layoutTrait(traitCollection: UITraitCollection) {
         if (!sharedConstraints[0].isActive) {
             NSLayoutConstraint.deactivate(regularConstraints)
             NSLayoutConstraint.deactivate(compactConstraints)
             NSLayoutConstraint.deactivate(sharedConstraints)
-            signUpScrollView.isScrollEnabled = false
             NSLayoutConstraint.activate(sharedConstraints)
             
         } else if traitCollection.horizontalSizeClass == .compact &&
-            traitCollection.verticalSizeClass == .regular {
+                  traitCollection.verticalSizeClass == .regular {
             
             NSLayoutConstraint.deactivate(sharedConstraints)
             
@@ -207,7 +229,6 @@ class HouseSignUpStep2View: UIView {
         } else {
             
             NSLayoutConstraint.deactivate(sharedConstraints)
-            signUpScrollView.isScrollEnabled = true
             
             if compactConstraints.count > 0 && compactConstraints[0].isActive {
                 NSLayoutConstraint.deactivate(compactConstraints)
@@ -238,7 +259,7 @@ class HouseSignUpStep2View: UIView {
             signUpScrollView.topAnchor.constraint(equalTo: sectionLabel.bottomAnchor, constant: 5),
             signUpScrollView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             signUpScrollView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            signUpScrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            signUpScrollView.heightAnchor.constraint(equalToConstant: 230),
             
             signUpScrollStackViewContainer.topAnchor.constraint(equalTo: signUpScrollView.topAnchor, constant: 5),
             signUpScrollStackViewContainer.leftAnchor.constraint(equalTo: signUpScrollView.leftAnchor, constant: 5),
@@ -277,7 +298,7 @@ class HouseSignUpStep2View: UIView {
             signUpScrollView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 5),
             signUpScrollView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             signUpScrollView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            signUpScrollView.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -10),
+            signUpScrollView.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor, constant: -10),
             
             signUpScrollStackViewContainer.topAnchor.constraint(equalTo: signUpScrollView.topAnchor, constant: 5),
             signUpScrollStackViewContainer.leftAnchor.constraint(equalTo: signUpScrollView.leftAnchor, constant: 5),

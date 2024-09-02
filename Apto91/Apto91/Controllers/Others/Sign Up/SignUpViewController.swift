@@ -36,8 +36,6 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController: SignUpViewDelegate {
     func navigateToHouseSignUpButton(_ sender: UIButton) {
         let vc = HouseSignUpViewController()
-        vc.navigationController?.navigationBar.prefersLargeTitles = true
-        vc.navigationItem.largeTitleDisplayMode = .always
         navigationController?.pushViewController(vc, animated: true)
     }
     

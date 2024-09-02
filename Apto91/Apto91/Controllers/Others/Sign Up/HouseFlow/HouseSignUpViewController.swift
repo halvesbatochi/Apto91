@@ -20,6 +20,10 @@ class HouseSignUpViewController: UIViewController {
         setUpView()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     private func setUpView() {
         NSLayoutConstraint.activate([
             houseSignUpView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -33,8 +37,6 @@ class HouseSignUpViewController: UIViewController {
 extension HouseSignUpViewController: HouseSignUpViewDelegate {
     func navigateToHouseSignUpStep2(_ sender: UIButton) {
         let vc = HouseSignUpStep2ViewController()
-        vc.navigationController?.navigationBar.prefersLargeTitles = true
-        vc.navigationItem.largeTitleDisplayMode = .always
         navigationController?.pushViewController(vc, animated: true)
     }
 }

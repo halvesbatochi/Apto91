@@ -16,7 +16,13 @@ class HouseSignUpStep2ViewController: UIViewController {
         view.backgroundColor = UIColor.signUpBackground
         view.addSubview(signUpStep2View)
         
+        signUpStep2View.delegate = self
+        
         setUpView()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     private func setUpView() {
@@ -27,5 +33,11 @@ class HouseSignUpStep2ViewController: UIViewController {
             signUpStep2View.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    
+}
+
+extension HouseSignUpStep2ViewController: HouseSignUpStep2ViewDelegate {
+    func navigateToHouseSignUpStep3(_ sender: UIButton) {
+        let vc = HouseSignUpStep3ViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

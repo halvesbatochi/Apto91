@@ -1,20 +1,20 @@
 //
-//  APHouseSignUpView.swift
+//  HouseSignUpStep3View.swift
 //  Apto91
 //
-//  Created by Henrique Alves Batochi on 22/06/24.
+//  Created by Henrique Alves Batochi on 06/07/24.
 //
 
 import UIKit
 
-/// Interface to realy HouseSignUp view events
-protocol HouseSignUpViewDelegate: AnyObject {
-    func navigateToHouseSignUpStep2(_ sender: UIButton)
+/// Interface to realy HouseSignUpStep3 view events
+protocol HouseSignUpStep3ViewDelegate: AnyObject {
+    func navigateToHouseSignUpStep4(_ sender: UIButton)
 }
 
-class HouseSignUpView: UIView {
+class HouseSignUpStep3View: UIView {
     
-    public weak var delegate: HouseSignUpViewDelegate?
+    public weak var delegate: HouseSignUpStep3ViewDelegate?
 
     private let sizeTraits: [UITrait] = [UITraitVerticalSizeClass.self, UITraitHorizontalSizeClass.self]
     private var compactConstraints: [NSLayoutConstraint] = []
@@ -32,7 +32,7 @@ class HouseSignUpView: UIView {
     
     private let messageLabel: UILabel = {
         let label = UILabel()
-        label.text = "Escolha a opção para iniciar seu cadastro"
+        label.text = "Forneça um nome para\na residência"
         label.font = .systemFont(ofSize: 16, weight: .light)
         label.textColor = UIColor.signUpText
         label.numberOfLines = 0
@@ -42,7 +42,7 @@ class HouseSignUpView: UIView {
     
     private let headerImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "HouseHeaderSignUp1")
+        image.image = UIImage(named: "HouseHeaderSignUp3")
         image.contentMode = .scaleToFill
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -50,71 +50,21 @@ class HouseSignUpView: UIView {
     
     private let sectionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Dados Pessoais"
+        label.text = "Residência"
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = UIColor.signUpText
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let signUpScrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private let signUpScrollStackViewContainer: UIStackView = {
-        let view = UIStackView()
-        view.axis = .vertical
-        view.spacing = 20
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private let nameTextField: UITextField = {
+    private let houseNameTextField: UITextField = {
         let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "Nome",
-                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
-        textField.textContentType = .givenName
-        textField.clearButtonMode = .whileEditing
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .words
-        textField.textAlignment = .left
-        textField.font = .systemFont(ofSize: 20)
-        textField.backgroundColor = UIColor.signUpText
-        textField.textColor = UIColor.apto91Text
-        textField.alpha = 0.7
-        textField.layer.cornerRadius = 3
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    private let lastNameTextField: UITextField = {
-        let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "Sobrenome",
-                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
-        textField.textContentType = .familyName
-        textField.clearButtonMode = .whileEditing
-        textField.autocorrectionType = .no
-        textField.autocapitalizationType = .words
-        textField.textAlignment = .left
-        textField.font = .systemFont(ofSize: 20)
-        textField.backgroundColor = UIColor.signUpText
-        textField.textColor = UIColor.apto91Text
-        textField.alpha = 0.7
-        textField.layer.cornerRadius = 3
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    private let cpfTextField: UITextField = {
-        let textField = UITextField()
-        textField.attributedPlaceholder = NSAttributedString(string: "CPF",
+        textField.attributedPlaceholder = NSAttributedString(string: "Nome da casa",
                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray])
         textField.clearButtonMode = .whileEditing
         textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.textAlignment = .left
-        textField.keyboardType = .numberPad
         textField.font = .systemFont(ofSize: 20)
         textField.backgroundColor = UIColor.signUpText
         textField.textColor = UIColor.apto91Text
@@ -134,7 +84,7 @@ class HouseSignUpView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -142,19 +92,13 @@ class HouseSignUpView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor.signUpBackground
         
+        
         self.addSubviews(titleLabel,
                          messageLabel,
                          headerImage,
-                         sectionLabel, 
-                         signUpScrollView,
+                         sectionLabel,
+                         houseNameTextField,
                          nextButton)
-        
-        signUpScrollView.addSubview(signUpScrollStackViewContainer)
-        signUpScrollStackViewContainer.addArrangedSubview(nameTextField)
-        signUpScrollStackViewContainer.addArrangedSubview(lastNameTextField)
-        signUpScrollStackViewContainer.addArrangedSubview(cpfTextField)
-        
-        cpfTextField.delegate = self
         
         addConstraints()
         setUpButton()
@@ -172,28 +116,28 @@ class HouseSignUpView: UIView {
         endEditing(true)
     }
     
-    private func chooseConstraints(traitCollection: UITraitCollection) {
-        
-        if traitCollection.verticalSizeClass == .regular &&
-            traitCollection.horizontalSizeClass == .compact {
-            NSLayoutConstraint.activate(sharedConstraints)
-        } else if traitCollection.verticalSizeClass == .compact &&
-                    traitCollection.horizontalSizeClass == .regular {
-            NSLayoutConstraint.activate(compactConstraints)
-        } else {
-            NSLayoutConstraint.activate(regularConstraints)
-        }
-    }
-    
     private func setUpButton() {
-        self.nextButton.addTarget(self, 
+        self.nextButton.addTarget(self,
                                   action: #selector(self.nextClickedButton),
                                   for: .touchUpInside)
     }
     
-    @objc 
+    @objc
     private func nextClickedButton(_ sender: UIButton) {
-        delegate?.navigateToHouseSignUpStep2(sender)
+        delegate?.navigateToHouseSignUpStep4(sender)
+    }
+    
+    private func chooseConstraints(traitCollection: UITraitCollection) {
+        
+        if traitCollection.verticalSizeClass == .regular &&
+           traitCollection.horizontalSizeClass == .compact {
+            NSLayoutConstraint.activate(sharedConstraints)
+        } else if traitCollection.verticalSizeClass == .compact &&
+                  traitCollection.horizontalSizeClass == .regular {
+            NSLayoutConstraint.activate(compactConstraints)
+        } else {
+            NSLayoutConstraint.activate(regularConstraints)
+        }
     }
     
     private func layoutTrait(traitCollection: UITraitCollection) {
@@ -204,7 +148,7 @@ class HouseSignUpView: UIView {
             NSLayoutConstraint.activate(sharedConstraints)
             
         } else if traitCollection.horizontalSizeClass == .compact &&
-            traitCollection.verticalSizeClass == .regular {
+                  traitCollection.verticalSizeClass == .regular {
             
             NSLayoutConstraint.deactivate(sharedConstraints)
             
@@ -233,30 +177,21 @@ class HouseSignUpView: UIView {
             
             messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
             messageLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor, constant: 0),
-            messageLabel.widthAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.width + 10),
+            messageLabel.widthAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.width + 60),
             
-            headerImage.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -15),
+            headerImage.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             headerImage.rightAnchor.constraint(equalTo: rightAnchor, constant: -5),
-            headerImage.heightAnchor.constraint(equalToConstant: 112),
-            headerImage.widthAnchor.constraint(equalToConstant: 149),
+            headerImage.heightAnchor.constraint(equalToConstant: 90),
+            headerImage.widthAnchor.constraint(equalToConstant: 150),
             
-            sectionLabel.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 30),
+            sectionLabel.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 50),
             sectionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            signUpScrollView.topAnchor.constraint(equalTo: sectionLabel.bottomAnchor, constant: 5),
-            signUpScrollView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            signUpScrollView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            signUpScrollView.heightAnchor.constraint(equalToConstant: 180),
-            
-            signUpScrollStackViewContainer.topAnchor.constraint(equalTo: signUpScrollView.topAnchor, constant: 5),
-            signUpScrollStackViewContainer.leftAnchor.constraint(equalTo: signUpScrollView.leftAnchor, constant: 5),
-            signUpScrollStackViewContainer.rightAnchor.constraint(equalTo: signUpScrollView.rightAnchor),
-            signUpScrollStackViewContainer.bottomAnchor.constraint(equalTo: signUpScrollView.bottomAnchor),
-            signUpScrollStackViewContainer.widthAnchor.constraint(equalTo: signUpScrollView.widthAnchor, constant: -10),
-            
-            nameTextField.heightAnchor.constraint(equalToConstant: 40),
-            lastNameTextField.heightAnchor.constraint(equalToConstant: 40),
-            cpfTextField.heightAnchor.constraint(equalToConstant: 40),
+            houseNameTextField.centerYAnchor.constraint(equalTo: centerYAnchor),
+            houseNameTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            houseNameTextField.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            houseNameTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+            houseNameTextField.heightAnchor.constraint(equalToConstant: 40),
             
             nextButton.heightAnchor.constraint(equalToConstant: 50),
             nextButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
@@ -271,30 +206,21 @@ class HouseSignUpView: UIView {
             
             messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
             messageLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor, constant: 0),
-            messageLabel.widthAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.width + 10),
+            messageLabel.widthAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.width + 60),
             
-            headerImage.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -15),
+            headerImage.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             headerImage.rightAnchor.constraint(equalTo: rightAnchor, constant: -5),
             headerImage.heightAnchor.constraint(equalToConstant: 90),
-            headerImage.widthAnchor.constraint(equalToConstant: 120),
+            headerImage.widthAnchor.constraint(equalToConstant: 130),
             
             sectionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             sectionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            signUpScrollView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 5),
-            signUpScrollView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            signUpScrollView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            signUpScrollView.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor),
-            
-            signUpScrollStackViewContainer.topAnchor.constraint(equalTo: signUpScrollView.topAnchor, constant: 5),
-            signUpScrollStackViewContainer.leftAnchor.constraint(equalTo: signUpScrollView.leftAnchor, constant: 5),
-            signUpScrollStackViewContainer.rightAnchor.constraint(equalTo: signUpScrollView.rightAnchor),
-            signUpScrollStackViewContainer.bottomAnchor.constraint(equalTo: signUpScrollView.bottomAnchor),
-            signUpScrollStackViewContainer.widthAnchor.constraint(equalTo: signUpScrollView.widthAnchor, constant: -10),
-            
-            nameTextField.heightAnchor.constraint(equalToConstant: 40),
-            lastNameTextField.heightAnchor.constraint(equalToConstant: 40),
-            cpfTextField.heightAnchor.constraint(equalToConstant: 40),
+            houseNameTextField.centerYAnchor.constraint(equalTo: centerYAnchor),
+            houseNameTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            houseNameTextField.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            houseNameTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+            houseNameTextField.heightAnchor.constraint(equalToConstant: 40),
             
             nextButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
             nextButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
@@ -302,12 +228,5 @@ class HouseSignUpView: UIView {
         ])
         
         compactConstraints.append(contentsOf: [])
-    }
-}
-
-extension HouseSignUpView: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        return true
     }
 }
