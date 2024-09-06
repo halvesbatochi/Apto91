@@ -22,6 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc = false ? TabBarViewController() : SignUpViewController()
         nav.viewControllers = [vc]
         window.rootViewController = false ? vc : nav
+        
+        window.
         window.makeKeyAndVisible()
         self.window = window
     }
