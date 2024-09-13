@@ -1,25 +1,20 @@
 //
-//  APHouseSignUpView.swift
+//  ResidentSignUpStep2View.swift
 //  Apto91
 //
-//  Created by Henrique Alves Batochi on 22/06/24.
+//  Created by Henrique Alves Batochi on 13/09/24.
 //
 
 import UIKit
 
-/// Interface to realy HouseSignUp view events
-protocol HouseSignUpViewDelegate: AnyObject {
-    func navigateToHouseSignUpStep2(_ sender: UIButton)
+/// Interface to realy ResidentSignUpStep2View view events
+protocol ResidentSignUpStep2ViewDelegate: AnyObject {
+    func navigateToResidentSignUpStep3(_ sender: UIButton)
 }
 
-class HouseSignUpView: UIView {
+class ResidentSignUpStep2View: UIView {
     
-    public weak var delegate: HouseSignUpViewDelegate?
-
-    private let sizeTraits: [UITrait] = [UITraitVerticalSizeClass.self, UITraitHorizontalSizeClass.self]
-    private var compactConstraints: [NSLayoutConstraint] = []
-    private var regularConstraints: [NSLayoutConstraint] = []
-    private var sharedConstraints: [NSLayoutConstraint] = []
+    public weak var delegate: ResidentSignUpStep2ViewDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -32,7 +27,7 @@ class HouseSignUpView: UIView {
     
     private let messageLabel: UILabel = {
         let label = UILabel()
-        label.text = "Você será o responsável por\ninformar, gerir e aprovar as\ncontas da casa"
+        label.text = "Informe seus dados pessoais\npara cadastro"
         label.font = .systemFont(ofSize: 16, weight: .light)
         label.textColor = UIColor.signUpText
         label.numberOfLines = 0
@@ -134,18 +129,18 @@ class HouseSignUpView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = UIColor.signUpBackground
+        backgroundColor = .signUpBackground
         
         self.addSubviews(titleLabel,
                          messageLabel,
                          headerImage,
-                         sectionLabel, 
+                         sectionLabel,
                          signUpScrollView,
                          nextButton)
         
@@ -158,10 +153,6 @@ class HouseSignUpView: UIView {
         
         addConstraints()
         setUpButton()
-        chooseConstraints(traitCollection: UIScreen.main.traitCollection)
-        registerForTraitChanges(sizeTraits) {(self: Self, previousTraitCollection: UITraitCollection) in
-            self.layoutTrait(traitCollection: UIScreen.main.traitCollection)
-        }
     }
     
     required init?(coder: NSCoder) {
@@ -172,61 +163,19 @@ class HouseSignUpView: UIView {
         endEditing(true)
     }
     
-    private func chooseConstraints(traitCollection: UITraitCollection) {
-        
-        if traitCollection.verticalSizeClass == .regular &&
-            traitCollection.horizontalSizeClass == .compact {
-            NSLayoutConstraint.activate(sharedConstraints)
-        } else if traitCollection.verticalSizeClass == .compact &&
-                    traitCollection.horizontalSizeClass == .regular {
-            NSLayoutConstraint.activate(compactConstraints)
-        } else {
-            NSLayoutConstraint.activate(regularConstraints)
-        }
-    }
-    
     private func setUpButton() {
-        self.nextButton.addTarget(self, 
+        self.nextButton.addTarget(self,
                                   action: #selector(self.nextClickedButton),
                                   for: .touchUpInside)
     }
     
-    @objc 
+    @objc
     private func nextClickedButton(_ sender: UIButton) {
-        delegate?.navigateToHouseSignUpStep2(sender)
-    }
-    
-    private func layoutTrait(traitCollection: UITraitCollection) {
-        if (!sharedConstraints[0].isActive) {
-            NSLayoutConstraint.deactivate(regularConstraints)
-            NSLayoutConstraint.deactivate(compactConstraints)
-            NSLayoutConstraint.deactivate(sharedConstraints)
-            NSLayoutConstraint.activate(sharedConstraints)
-            
-        } else if traitCollection.horizontalSizeClass == .compact &&
-            traitCollection.verticalSizeClass == .regular {
-            
-            NSLayoutConstraint.deactivate(sharedConstraints)
-            
-            if regularConstraints.count > 0 && regularConstraints[0].isActive {
-                NSLayoutConstraint.deactivate(regularConstraints)
-            }
-            NSLayoutConstraint.activate(compactConstraints)
-            
-        } else {
-            
-            NSLayoutConstraint.deactivate(sharedConstraints)
-            
-            if compactConstraints.count > 0 && compactConstraints[0].isActive {
-                NSLayoutConstraint.deactivate(compactConstraints)
-            }
-            NSLayoutConstraint.activate(regularConstraints)
-        }
+        delegate?.navigateToResidentSignUpStep3(sender)
     }
     
     private func addConstraints() {
-        
-        sharedConstraints.append(contentsOf: [
+        NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 4),
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
             titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -(UIScreen.main.bounds.width / 2)),
@@ -263,49 +212,10 @@ class HouseSignUpView: UIView {
             nextButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
             nextButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
         ])
-        
-        regularConstraints.append(contentsOf: [
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 4),
-            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            
-            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
-            messageLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor, constant: 0),
-            messageLabel.widthAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.width + 10),
-            
-            headerImage.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -15),
-            headerImage.rightAnchor.constraint(equalTo: rightAnchor, constant: -5),
-            headerImage.heightAnchor.constraint(equalToConstant: 90),
-            headerImage.widthAnchor.constraint(equalToConstant: 120),
-            
-            sectionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            sectionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            signUpScrollView.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 5),
-            signUpScrollView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            signUpScrollView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            signUpScrollView.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor),
-            
-            signUpScrollStackViewContainer.topAnchor.constraint(equalTo: signUpScrollView.topAnchor, constant: 5),
-            signUpScrollStackViewContainer.leftAnchor.constraint(equalTo: signUpScrollView.leftAnchor, constant: 5),
-            signUpScrollStackViewContainer.rightAnchor.constraint(equalTo: signUpScrollView.rightAnchor),
-            signUpScrollStackViewContainer.bottomAnchor.constraint(equalTo: signUpScrollView.bottomAnchor),
-            signUpScrollStackViewContainer.widthAnchor.constraint(equalTo: signUpScrollView.widthAnchor, constant: -10),
-            
-            nameTextField.heightAnchor.constraint(equalToConstant: 40),
-            lastNameTextField.heightAnchor.constraint(equalToConstant: 40),
-            cpfTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            nextButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 10),
-            nextButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -10),
-            nextButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
-        ])
-        
-        compactConstraints.append(contentsOf: [])
     }
 }
 
-extension HouseSignUpView: UITextFieldDelegate {
+extension ResidentSignUpStep2View: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
         return true

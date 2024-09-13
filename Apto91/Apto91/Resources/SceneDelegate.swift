@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         nav.viewControllers = [vc]
         window.rootViewController = false ? vc : nav
         
-        window.
         window.makeKeyAndVisible()
         self.window = window
     }

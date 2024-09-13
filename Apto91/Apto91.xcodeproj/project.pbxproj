@@ -26,9 +26,11 @@
 		5C043DD52C267BE6004A95A7 /* HouseSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C043DD42C267BE6004A95A7 /* HouseSignUpView.swift */; };
 		5C2E77B32C25D318003BCA83 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2E77B22C25D318003BCA83 /* Extensions.swift */; };
 		5C40F04D2C2686CA0005179C /* ResidentSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40F04C2C2686CA0005179C /* ResidentSignUpViewController.swift */; };
-		5C40F04F2C2687050005179C /* APResidentSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40F04E2C2687050005179C /* APResidentSignUpView.swift */; };
+		5C40F04F2C2687050005179C /* ResidentSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C40F04E2C2687050005179C /* ResidentSignUpView.swift */; };
 		5C554EE52C854A36004D54EB /* HouseSignUpStep4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C554EE42C854A36004D54EB /* HouseSignUpStep4View.swift */; };
 		5C554EE72C854A5E004D54EB /* HouseSignUpStep4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C554EE62C854A5E004D54EB /* HouseSignUpStep4ViewController.swift */; };
+		5CAD17EB2C94832700DB467C /* ResidentSignUpStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD17EA2C94832700DB467C /* ResidentSignUpStep2View.swift */; };
+		5CAD17ED2C94840D00DB467C /* ResidentSignUpStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAD17EC2C94840D00DB467C /* ResidentSignUpStep2ViewController.swift */; };
 		5CBE25822C390375000858C1 /* HouseSignUpStep2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBE25812C390375000858C1 /* HouseSignUpStep2ViewController.swift */; };
 		5CBE25842C39038D000858C1 /* HouseSignUpStep2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBE25832C39038D000858C1 /* HouseSignUpStep2View.swift */; };
 		5CDE8A0F2C3A2C62004B557F /* HouseSignUpStep3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE8A0E2C3A2C62004B557F /* HouseSignUpStep3ViewController.swift */; };
@@ -57,9 +59,11 @@
 		5C043DD42C267BE6004A95A7 /* HouseSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSignUpView.swift; sourceTree = "<group>"; };
 		5C2E77B22C25D318003BCA83 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5C40F04C2C2686CA0005179C /* ResidentSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentSignUpViewController.swift; sourceTree = "<group>"; };
-		5C40F04E2C2687050005179C /* APResidentSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APResidentSignUpView.swift; sourceTree = "<group>"; };
+		5C40F04E2C2687050005179C /* ResidentSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentSignUpView.swift; sourceTree = "<group>"; };
 		5C554EE42C854A36004D54EB /* HouseSignUpStep4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSignUpStep4View.swift; sourceTree = "<group>"; };
 		5C554EE62C854A5E004D54EB /* HouseSignUpStep4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSignUpStep4ViewController.swift; sourceTree = "<group>"; };
+		5CAD17EA2C94832700DB467C /* ResidentSignUpStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentSignUpStep2View.swift; sourceTree = "<group>"; };
+		5CAD17EC2C94840D00DB467C /* ResidentSignUpStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentSignUpStep2ViewController.swift; sourceTree = "<group>"; };
 		5CBE25812C390375000858C1 /* HouseSignUpStep2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSignUpStep2ViewController.swift; sourceTree = "<group>"; };
 		5CBE25832C39038D000858C1 /* HouseSignUpStep2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSignUpStep2View.swift; sourceTree = "<group>"; };
 		5CDE8A0E2C3A2C62004B557F /* HouseSignUpStep3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseSignUpStep3ViewController.swift; sourceTree = "<group>"; };
@@ -234,9 +238,9 @@
 		5C01AD272C154270006CFF5F /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
-				5CBE25802C39033C000858C1 /* ResidentFlow */,
-				5CBE257F2C390333000858C1 /* HouseFlow */,
 				5C01AD142C1531A4006CFF5F /* SignUpViewController.swift */,
+				5CBE257F2C390333000858C1 /* HouseFlow */,
+				5CBE25802C39033C000858C1 /* ResidentFlow */,
 			);
 			path = "Sign Up";
 			sourceTree = "<group>";
@@ -255,7 +259,8 @@
 		5CBE257E2C3902CD000858C1 /* ResidentFlow */ = {
 			isa = PBXGroup;
 			children = (
-				5C40F04E2C2687050005179C /* APResidentSignUpView.swift */,
+				5C40F04E2C2687050005179C /* ResidentSignUpView.swift */,
+				5CAD17EA2C94832700DB467C /* ResidentSignUpStep2View.swift */,
 			);
 			path = ResidentFlow;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				5C40F04C2C2686CA0005179C /* ResidentSignUpViewController.swift */,
+				5CAD17EC2C94840D00DB467C /* ResidentSignUpStep2ViewController.swift */,
 			);
 			path = ResidentFlow;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 				5CDE8A112C3A2CF4004B557F /* HouseSignUpStep3View.swift in Sources */,
 				5C40F04D2C2686CA0005179C /* ResidentSignUpViewController.swift in Sources */,
 				5C01AD192C15357E006CFF5F /* BudgetViewController.swift in Sources */,
+				5CAD17ED2C94840D00DB467C /* ResidentSignUpStep2ViewController.swift in Sources */,
 				5C01AD152C1531A4006CFF5F /* SignUpViewController.swift in Sources */,
 				5C01AD232C154077006CFF5F /* ProfileViewController.swift in Sources */,
 				5C043DD52C267BE6004A95A7 /* HouseSignUpView.swift in Sources */,
@@ -368,11 +375,12 @@
 				5C01AD1C2C1535E1006CFF5F /* APBudgetView.swift in Sources */,
 				5C01ACF02C152238006CFF5F /* AppDelegate.swift in Sources */,
 				5C043DD32C267BB8004A95A7 /* HouseSignUpViewController.swift in Sources */,
+				5CAD17EB2C94832700DB467C /* ResidentSignUpStep2View.swift in Sources */,
 				5C01AD132C152EAB006CFF5F /* TabBarViewController.swift in Sources */,
 				5C01ACF22C152238006CFF5F /* SceneDelegate.swift in Sources */,
 				5C2E77B32C25D318003BCA83 /* Extensions.swift in Sources */,
 				5C554EE52C854A36004D54EB /* HouseSignUpStep4View.swift in Sources */,
-				5C40F04F2C2687050005179C /* APResidentSignUpView.swift in Sources */,
+				5C40F04F2C2687050005179C /* ResidentSignUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +530,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -537,7 +546,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -554,7 +563,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -569,7 +579,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

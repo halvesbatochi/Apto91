@@ -9,14 +9,14 @@ import UIKit
 
 class ResidentSignUpViewController: UIViewController {
 
-    private let residentSignUpView = APResidentSignUpView()
+    private let residentSignUpView = ResidentSignUpView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = UIColor.signUpBackground
-        
         view.addSubview(residentSignUpView)
+        
+        residentSignUpView.delegate = self
         
         setUpView()
     }
@@ -28,5 +28,12 @@ class ResidentSignUpViewController: UIViewController {
             residentSignUpView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             residentSignUpView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+}
+
+extension ResidentSignUpViewController: ResidentSignUpViewDelegate {
+    func navigateToResidentSignUpStep2(_ sender: UIButton) {
+        let vc = ResidentSignUpStep2ViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
